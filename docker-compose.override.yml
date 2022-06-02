@@ -1,0 +1,6 @@
+version: '3.8'
+
+services:
+  sql-server:
+    ports:
+     - "${PORT:?PORT must be set}"

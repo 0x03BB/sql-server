@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  sql-server:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    restart: unless-stopped
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "${DB_PASSWORD:?DB_PASSWORD must be set}"
+      MSSQL_PID: "Express"
+    volumes:
+      - "volume:/var/opt/mssql"
+    networks:
+      - network
+    healthcheck:
+      test: /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P "${DB_PASSWORD:?DB_PASSWORD must be set}" -Q "SELECT 1" -b -o /dev/null
+      interval: 10s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+
+volumes:
+  volume:
+    name: "${VOLUME:?VOLUME must be set}"
+
+networks:
+  network:
+    name: "${NETWORK:?NETWORK must be set}"
