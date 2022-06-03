@@ -5,7 +5,7 @@ services:
     networks:
      - network
     ports:
-     - "${PORT:-1433:1433}"
+     - "${PORT:-1433}:1433"
 
 networks:
   network:

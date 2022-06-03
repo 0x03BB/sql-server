@@ -3,4 +3,4 @@ version: '3.8'
 services:
   sql-server:
     ports:
-     - "${PORT:-1433:1433}"
+     - "${PORT:-1433}:1433"

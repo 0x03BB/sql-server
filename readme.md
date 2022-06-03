@@ -20,4 +20,4 @@ The name of the Docker volume used to persist SQL Server's data. This is require
 - NETWORK  
 The name of the Docker network to create. This is required if the `network` or `network-and-port` override file is used.
 - PORT  
-The port to use, using Docker Compose short syntax, if the `port` or `network-and-port` override file is used. Defaults to `1433:1433` if not provided.
+The port to use if the `port` or `network-and-port` override file is used. Defaults to `1433` if not provided.
