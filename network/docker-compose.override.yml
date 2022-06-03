@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  sql-server:
+    networks:
+     - network
+
+networks:
+  network:
+    name: "${NETWORK:?NETWORK must be set}"
