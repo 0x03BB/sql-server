@@ -9,4 +9,4 @@ services:
 
 networks:
   network:
-    name: "${NETWORK:?NETWORK must be set}"
+    name: "${NETWORK:?}"

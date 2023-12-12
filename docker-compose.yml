@@ -6,12 +6,12 @@ services:
     restart: unless-stopped
     environment:
       ACCEPT_EULA: "Y"
-      SA_PASSWORD: "${DB_PASSWORD:?DB_PASSWORD must be set}"
+      SA_PASSWORD: "${DB_PASSWORD:?}"
       MSSQL_PID: "Express"
     volumes:
       - "volume:/var/opt/mssql"
     healthcheck:
-      test: /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P "${DB_PASSWORD:?DB_PASSWORD must be set}" -Q "SELECT 1" -b -o /dev/null
+      test: /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P "${DB_PASSWORD:?}" -Q "SELECT 1" -b -o /dev/null
       interval: 10s
       timeout: 3s
       retries: 3
@@ -19,4 +19,4 @@ services:
 
 volumes:
   volume:
-    name: "${VOLUME:?VOLUME must be set}"
+    name: "${VOLUME:?}"
